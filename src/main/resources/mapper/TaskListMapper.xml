@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myfirst_todoapp.mapper.TaskListMapper">
+
+    <resultMap id="TaskInfo" type="com.example.myfirst_todoapp.entity.TaskEntity">
+        <result property = "taskId" column = "task_id"/>
+        <result property = "taskTitle" column = "task_title"/>
+        <result property = "userId" column = "user_id"/>
+        <result property = "taskDescription" column = "task_description"/>
+        <result property = "taskDeadline" column = "task_deadline"/>
+        <result property = "taskStatus" column = "task_status"/>
+        <result property = "createdAt" column = "created_at"/>
+        <result property = "deleteFlg" column = "delete_flg"/>
+    </resultMap>
+
+    <select id="findAllTaskByUserId" resultMap="TaskInfo">
+        SELECT *
+        FROM task_info
+        WHERE user_id = #{userId}
+        AND delete_flg = 0
+    </select>
+
+    <select id="findById" resultMap="TaskInfo">
+        SELECT *
+        FROM task_info
+        WHERE task_id = #{id}
+    </select>
+
+    <update id="saveTask" parameterType="com.example.myfirst_todoapp.entity.TaskEntity">
+        UPDATE task_info
+        SET task_title = #{taskTitle}, task_description = #{taskDescription}, task_deadline = #{taskDeadline}, task_status = #{taskStatus}
+        WHERE task_id = #{taskId}
+    </update>
+
+    <update id="deleteTask" parameterType="com.example.myfirst_todoapp.entity.TaskEntity">
+        UPDATE task_info
+        SET delete_flg = 1
+        WHERE task_id = #{taskId}
+    </update>
+
+    <insert id="insertNewTask" parameterType="com.example.myfirst_todoapp.entity.TaskEntity">
+        INSERT INTO task_info(task_title,user_id,task_description,task_deadline,task_status)
+        VALUES(#{taskTitle}, #{userId}, #{taskDescription}, #{taskDeadline}, #{taskStatus})
+    </insert>
+
+</mapper>

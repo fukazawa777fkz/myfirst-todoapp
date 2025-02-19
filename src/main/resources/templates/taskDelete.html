@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoApp</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>本当に削除してよろしいですか？</h1><br>
+        <form th:action="@{/tasks/delete}" th:object="${task}" method="post">
+            <input type="hidden" th:field="*{taskId}"><br>
+            <button type="submit"
+                style="color: red;width: 150px; height: 50px; font-size: 18px; padding: 10px;">削除する</button><br><br>
+        </form>
+        <a th:href="@{/cancel}" style="display: inline-block; width: 150px; height: 50px; font-size: 18px; text-align: center; 
+                line-height: 50px; background-color: #ddd; text-decoration: none; border-radius: 5px;">キャンセル</a>
+    </div>
+</body>
+
+</html>
