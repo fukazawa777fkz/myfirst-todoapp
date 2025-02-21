@@ -4,8 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-import java.util.Map;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -16,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.ArgumentCaptor;
 
 import com.example.myfirst_todoapp.entity.UserEntity;
-import com.example.myfirst_todoapp.entity.UserInfo;
 import com.example.myfirst_todoapp.entity.UserInfoExample;
 import com.example.myfirst_todoapp.form.RegisterForm;
 import com.example.myfirst_todoapp.mapper.LoginMapper;
@@ -29,12 +26,15 @@ class RegisterServiceImplTest {
     @InjectMocks
     private RegisterServiceImpl registerService;
 
+    // @MockBean　非推奨になったのでコメントアウト
     @Mock
     private UserInfoMapper userInfoMapper;
 
+    // @MockBean　非推奨になったのでコメントアウト
     @Mock
     private RegisterMapper registerMapper;
 
+    // @MockBean　非推奨になったのでコメントアウト
     @Mock
     private LoginMapper loginMapper;
 

@@ -1,5 +1,6 @@
 package com.example.myfirst_todoapp.controller;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.myfirst_todoapp.entity.UserEntity;
@@ -22,7 +23,8 @@ public class LoginControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    // @MockBean　非推奨になったのでコメントアウト
+    @MockitoBean
     private LoginService loginService;
 
     private UserEntity testUser;
